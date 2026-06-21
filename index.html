@@ -18,6 +18,13 @@
         location.hostname === '127.0.0.1' ||
         location.port === '5173';
 
+      if (!isLocalDev) {
+        const link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = './assets/main.css';
+        document.head.appendChild(link);
+      }
+
       const script = document.createElement('script');
       script.type = 'module';
       script.src = isLocalDev ? '/src/main.tsx' : './assets/main.js';
