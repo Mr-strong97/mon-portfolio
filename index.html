@@ -12,6 +12,16 @@
   </head>
   <body>
     <div id="root"></div>
-    <script type="module" src="./src/main.tsx"></script>
+    <script>
+      const isLocalDev =
+        location.hostname === 'localhost' ||
+        location.hostname === '127.0.0.1' ||
+        location.port === '5173';
+
+      const script = document.createElement('script');
+      script.type = 'module';
+      script.src = isLocalDev ? '/src/main.tsx' : './assets/main.js';
+      document.head.appendChild(script);
+    </script>
   </body>
 </html>

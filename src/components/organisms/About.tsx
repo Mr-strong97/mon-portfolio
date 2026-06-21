@@ -13,8 +13,8 @@ const philosophyTags = ['Accessibilité', 'Expérience Utilisateur', 'Design Ato
 
 export const About: React.FC = () => {
   const { ref, isVisible } = useIntersectionObserver();
-  const cvUrl = `${import.meta.env.BASE_URL}mon_cv.pdf`;
-  const avatarUrl = `${import.meta.env.BASE_URL}my1.jpg`;
+  const cvUrl = `${import.meta.env.BASE_URL}public/mon_cv.pdf`;
+  const avatarUrl = `${import.meta.env.BASE_URL}public/my1.jpg`;
 
   return (
     <section id="about" className="py-20 lg:py-28 bg-[#F7F8FF]">
