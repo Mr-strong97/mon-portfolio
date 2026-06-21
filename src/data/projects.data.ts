@@ -2,7 +2,7 @@ export interface Project {
   id: number;
   title: string;
   description: string;
-  category: 'Web' | 'Mobile' | 'IA' | 'Design' | 'Équipe';
+  category: 'Web' | 'Mobile' | 'IA' | 'Design' | 'Équipe' | 'Mon Parcours';
   tags: string[];
   image: string;
   liveUrl?: string;
