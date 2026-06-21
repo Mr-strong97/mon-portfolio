@@ -13,6 +13,8 @@ const philosophyTags = ['Accessibilité', 'Expérience Utilisateur', 'Design Ato
 
 export const About: React.FC = () => {
   const { ref, isVisible } = useIntersectionObserver();
+  const cvUrl = `${import.meta.env.BASE_URL}mon_cv.pdf`;
+  const avatarUrl = `${import.meta.env.BASE_URL}my1.jpg`;
 
   return (
     <section id="about" className="py-20 lg:py-28 bg-[#F7F8FF]">
@@ -30,7 +32,7 @@ export const About: React.FC = () => {
               Développeur Full-Stack & Designer UI spécialisé dans la création d'expériences numériques haute performance.
             </p>
             <a
-              href="/mon_cv.pdf"
+              href={cvUrl}
               className="inline-flex items-center gap-2 px-5 py-3 border-2 border-gray-900 text-gray-900 font-semibold rounded-[10px] hover:bg-gray-900 hover:text-white transition-all duration-200 text-sm whitespace-nowrap"
             >
               <Download size={16} />
@@ -47,7 +49,7 @@ export const About: React.FC = () => {
               {/* Avatar */}
               <div className="flex-shrink-0">
                 <div className="w-44 h-44 rounded-2xl bg-gradient-to-br from-blue-100 to-blue-200 flex items-center justify-center overflow-hidden border-2 border-blue-100">
-                  <img src="/my1.jpg" alt="Avatar de Maxime" className="w-full h-full object-cover" />
+                  <img src={avatarUrl} alt="Avatar de Maxime" className="w-full h-full object-cover" />
                 </div>
               </div>
               
