@@ -47,7 +47,7 @@ export const Testimonials: React.FC = () => {
           {/* Arrow left */}
           <button
             onClick={prev}
-            className="absolute -left-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-white border border-gray-200 rounded-full flex items-center justify-center shadow-md hover:bg-gray-50 hover:border-primary hover:text-primary transition-all duration-200"
+            className="absolute -left-4 top-1/2 -translate-y-1/2 z-10 hidden md:flex w-10 h-10 bg-white border border-gray-200 rounded-full items-center justify-center shadow-md hover:bg-gray-50 hover:border-primary hover:text-primary transition-all duration-200"
             aria-label="Précédent"
           >
             <ChevronLeft size={18} />
@@ -98,7 +98,7 @@ export const Testimonials: React.FC = () => {
           {/* Arrow right */}
           <button
             onClick={next}
-            className="absolute -right-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-white border border-gray-200 rounded-full flex items-center justify-center shadow-md hover:bg-gray-50 hover:border-primary hover:text-primary transition-all duration-200"
+            className="absolute -right-4 top-1/2 -translate-y-1/2 z-10 hidden md:flex w-10 h-10 bg-white border border-gray-200 rounded-full items-center justify-center shadow-md hover:bg-gray-50 hover:border-primary hover:text-primary transition-all duration-200"
             aria-label="Suivant"
           >
             <ChevronRight size={18} />

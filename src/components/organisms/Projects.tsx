@@ -53,28 +53,42 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ title, description, category,
           {githubUrl && (
             <a
               href={githubUrl}
+              target="_blank"
+              rel="noreferrer"
               className="text-gray-400 hover:text-gray-900 transition-colors"
               aria-label="GitHub"
             >
               <FaGithub size={18} />
             </a>
           )}
-          {liveUrl && (
+          {liveUrl && liveUrl !== '#' ? (
             <a
               href={liveUrl}
+              target="_blank"
+              rel="noreferrer"
               className="text-gray-400 hover:text-primary transition-colors"
               aria-label="Live project"
             >
               <ExternalLink size={18} />
             </a>
+          ) : (
+            <span className="text-xs font-medium text-gray-400">Démo à venir</span>
           )}
         </div>
-        <a
-          href={liveUrl || '#'}
-          className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:gap-2.5 transition-all duration-200"
-        >
-          Voir le projet <ArrowRight size={15} />
-        </a>
+        {liveUrl && liveUrl !== '#' ? (
+          <a
+            href={liveUrl}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:gap-2.5 transition-all duration-200"
+          >
+            Voir le projet <ArrowRight size={15} />
+          </a>
+        ) : (
+          <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-gray-400">
+            Projet privé <ArrowRight size={15} />
+          </span>
+        )}
       </div>
     </div>
   </div>

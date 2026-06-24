@@ -1,5 +1,6 @@
 import React from 'react';
-import { Mail, MapPin, AtSign, Share2, Globe, Send, CheckCircle, AlertCircle } from 'lucide-react';
+import { Mail, MapPin, Send, CheckCircle, AlertCircle, Brain, Sparkles } from 'lucide-react';
+import { FaGithub, FaInstagram, FaLinkedin } from 'react-icons/fa';
 import { useForm, useIntersectionObserver } from '../../hooks';
 
 const initialValues = {
@@ -14,10 +15,35 @@ const initialValues = {
 
 const projectTypes = ['Site web', 'App Mobile', 'IA', 'Design', 'Autre'];
 const budgets = ['< 500$', '500-1000$', '1000-3000$', '3000$+'];
+const contactEndpoint = 'https://formsubmit.co/ajax/mkstrong915@gmail.com';
 
 export const Contact: React.FC = () => {
   const { ref, isVisible } = useIntersectionObserver();
-  const { values, errors, isSubmitting, isSuccess, handleChange, handleSubmit } = useForm(initialValues);
+  const aiImageUrl = `${import.meta.env.BASE_URL}ia.jpg`;
+  const { values, errors, isSubmitting, isSuccess, formError, handleChange, handleSubmit } = useForm(initialValues, async (formValues) => {
+    const payload = new FormData();
+
+    Object.entries(formValues).forEach(([key, value]) => {
+      payload.append(key, value);
+    });
+
+    payload.append('_captcha', 'false');
+    payload.append('_template', 'table');
+    payload.append('_subject', `Nouveau message portfolio - ${formValues.subject || 'Nouveau projet'}`);
+    payload.append('_replyto', formValues.email);
+
+    const response = await fetch(contactEndpoint, {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+      },
+      body: payload,
+    });
+
+    if (!response.ok) {
+      throw new Error('Impossible d\'envoyer le message pour le moment.');
+    }
+  });
 
   return (
     <section id="contact" className="py-20 lg:py-28 bg-white">
@@ -43,6 +69,24 @@ export const Contact: React.FC = () => {
                 <p className="text-blue-100 text-sm leading-relaxed mb-8">
                   Vous avez un projet en tête ou vous souhaitez simplement discuter de technologie ? N'hésitez pas à me contacter. Je réponds généralement sous 24 heures.
                 </p>
+
+                <div className="mb-8 rounded-2xl bg-white/10 border border-white/10 p-4 flex items-center gap-4">
+                  <img
+                    src={aiImageUrl}
+                    alt="Illustration IA"
+                    className="w-14 h-14 rounded-xl object-cover flex-shrink-0 border border-white/20"
+                    loading="lazy"
+                  />
+                  <div>
+                    <div className="flex items-center gap-2 text-white font-semibold text-sm">
+                      <Sparkles size={16} />
+                      IA + Réseaux
+                    </div>
+                    <div className="text-blue-100 text-xs leading-relaxed mt-1">
+                      Automatisation, branding et expérience sociale plus claire.
+                    </div>
+                  </div>
+                </div>
 
                 <div className="space-y-4">
                   <div className="flex items-center gap-4">
@@ -76,21 +120,26 @@ export const Contact: React.FC = () => {
               <div className="border-t border-white/20 my-8" />
 
               {/* Social links */}
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-3 flex-wrap">
                 {[
-                  { icon: AtSign, label: 'Email' },
-                  { icon: Share2, label: 'Share' },
-                  { icon: Globe, label: 'Web' },
-                ].map(({ icon: Icon, label }) => (
+                  { icon: FaLinkedin, label: 'LinkedIn', href: 'https://www.linkedin.com/in/isaac-mbuyama-9b9781362/' },
+                  { icon: FaGithub, label: 'GitHub', href: 'https://github.com/Mr-strong97' },
+                  { icon: FaInstagram, label: 'Instagram', href: 'https://www.instagram.com/monsieurstrong01?igsh=cHN4ZTZubXhpMnRk' },
+                ].map(({ icon: Icon, label, href }) => (
                   <a
                     key={label}
-                    href="#"
+                    href={href}
                     aria-label={label}
+                    target="_blank"
+                    rel="noreferrer"
                     className="w-10 h-10 bg-white/10 rounded-xl flex items-center justify-center text-white hover:bg-white/20 transition-colors"
                   >
                     <Icon size={17} />
                   </a>
                 ))}
+                <div className="w-10 h-10 bg-white/10 rounded-xl flex items-center justify-center text-white" aria-hidden="true">
+                  <Brain size={17} />
+                </div>
               </div>
             </div>
 
@@ -100,6 +149,13 @@ export const Contact: React.FC = () => {
                 <div className="mb-6 flex items-center gap-3 p-4 bg-green-50 border border-green-200 rounded-xl text-green-700">
                   <CheckCircle size={18} />
                   <span className="font-medium text-sm">Message envoyé avec succès ! Je vous recontacte sous 24h.</span>
+                </div>
+              )}
+
+              {formError && (
+                <div className="mb-6 flex items-center gap-3 p-4 bg-red-50 border border-red-200 rounded-xl text-red-700">
+                  <AlertCircle size={18} />
+                  <span className="font-medium text-sm">{formError}</span>
                 </div>
               )}
 
@@ -209,6 +265,11 @@ export const Contact: React.FC = () => {
                     En envoyant ce formulaire, j'accepte que mes données soient traitées conformément à la politique de confidentialité du site.
                   </label>
                 </div>
+                {errors.privacy && (
+                  <p className="mt-1 text-xs text-red-500 flex items-center gap-1">
+                    <AlertCircle size={11} /> {errors.privacy}
+                  </p>
+                )}
 
                 {/* Submit */}
                 <button

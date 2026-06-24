@@ -102,11 +102,15 @@ export function useScrollSpy(sectionIds: string[]) {
 }
 
 // Form hook
-export function useForm<T extends Record<string, string>>(initialValues: T) {
+export function useForm<T extends Record<string, string>>(
+  initialValues: T,
+  onSubmit?: (values: T) => Promise<void> | void,
+) {
   const [values, setValues] = useState<T>(initialValues);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [formError, setFormError] = useState('');
 
   const handleChange = (field: keyof T, value: string) => {
     setValues(v => ({ ...v, [field]: value }));
@@ -122,6 +126,7 @@ export function useForm<T extends Record<string, string>>(initialValues: T) {
       else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(vals.email)) newErrors.email = 'Email invalide';
     }
     if ('message' in vals && !vals.message.trim()) newErrors.message = 'Le message est requis';
+    if ('privacy' in vals && !vals.privacy) newErrors.privacy = 'Vous devez accepter la politique de confidentialité';
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -130,12 +135,19 @@ export function useForm<T extends Record<string, string>>(initialValues: T) {
     e.preventDefault();
     if (!validate()) return;
     setIsSubmitting(true);
-    await new Promise(r => setTimeout(r, 1500));
-    setIsSubmitting(false);
-    setIsSuccess(true);
-    setValues(initialValues);
-    setTimeout(() => setIsSuccess(false), 4000);
+    setFormError('');
+
+    try {
+      await onSubmit?.(values);
+      setIsSuccess(true);
+      setValues(initialValues);
+      setTimeout(() => setIsSuccess(false), 4000);
+    } catch (error) {
+      setFormError(error instanceof Error ? error.message : 'Une erreur est survenue pendant l\'envoi');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
-  return { values, errors, isSubmitting, isSuccess, handleChange, handleSubmit };
+  return { values, errors, isSubmitting, isSuccess, formError, handleChange, handleSubmit };
 }

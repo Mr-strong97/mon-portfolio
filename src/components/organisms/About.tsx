@@ -13,8 +13,9 @@ const philosophyTags = ['Accessibilité', 'Expérience Utilisateur', 'Design Ato
 
 export const About: React.FC = () => {
   const { ref, isVisible } = useIntersectionObserver();
-  const cvUrl = `${import.meta.env.BASE_URL}public/mon_cv.pdf`;
-  const avatarUrl = `${import.meta.env.BASE_URL}public/my1.jpg`;
+  const cvUrl = `${import.meta.env.BASE_URL}mon_cv.pdf`;
+  const avatarUrl = `${import.meta.env.BASE_URL}my1.jpg`;
+  const aiIllustrationUrl = `${import.meta.env.BASE_URL}ia.jpg`;
 
   return (
     <section id="about" className="py-20 lg:py-28 bg-[#F7F8FF]">
@@ -79,16 +80,16 @@ export const About: React.FC = () => {
             </div>
 
             {/* Stats row */}
-            <div className="flex gap-4 mt-6 pt-6 border-t border-gray-100">
-              <div className="flex-1 bg-gray-50 rounded-xl p-4 text-center">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-6 pt-6 border-t border-gray-100">
+              <div className="bg-gray-50 rounded-xl p-4 text-center">
                 <div className="text-2xl font-bold font-poppins text-gray-900">10+</div>
                 <div className="text-xs text-gray-500 mt-1 uppercase tracking-wide">Projets Solo</div>
               </div>
-              <div className="flex-1 bg-gray-50 rounded-xl p-4 text-center">
+              <div className="bg-gray-50 rounded-xl p-4 text-center">
                 <div className="text-2xl font-bold font-poppins text-gray-900">24+</div>
                 <div className="text-xs text-gray-500 mt-1 uppercase tracking-wide">Projets Équipe</div>
               </div>
-              <div className="flex-1 bg-gray-50 rounded-xl p-4 text-center">
+              <div className="bg-gray-50 rounded-xl p-4 text-center">
                 <div className="text-2xl font-bold font-poppins text-gray-900">3+</div>
                 <div className="text-xs text-gray-500 mt-1 uppercase tracking-wide">Ans d'Expérience</div>
               </div>
@@ -132,8 +133,14 @@ export const About: React.FC = () => {
                   ))}
                 </div>
               </div>
-              <div className="bg-gradient-to-br from-blue-50 to-indigo-100 rounded-xl h-36 flex items-center justify-center">
-                <div className="text-xl text-primary"><Code2 className="w-20 h-20" /></div>
+              <div className="relative overflow-hidden rounded-xl h-36 bg-gradient-to-br from-blue-50 to-indigo-100">
+                <img
+                  src={aiIllustrationUrl}
+                  alt="Illustration IA"
+                  className="w-full h-full object-cover"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/15 via-transparent to-white/10" />
               </div>
             </div>
           </div>
@@ -141,7 +148,7 @@ export const About: React.FC = () => {
           {/* Soft skills */}
           <div className={`bg-white rounded-2xl border border-gray-100 shadow-[0_4px_24px_rgba(0,0,0,0.06)] p-6 reveal reveal-delay-4 ${isVisible ? 'visible' : ''}`}>
             <h3 className="font-bold font-poppins text-gray-900 mb-4">Soft Skills</h3>
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {softSkills.map((skill) => (
                 <div key={skill.label} className="flex items-center gap-2 bg-gray-50 rounded-xl p-3">
                   <div className="w-6 h-6 bg-primary/20 rounded-full flex items-center justify-center flex-shrink-0">

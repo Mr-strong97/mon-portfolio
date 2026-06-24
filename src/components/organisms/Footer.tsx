@@ -68,6 +68,8 @@ export const Footer: React.FC = () => {
                   key={label}
                   href={href}
                   aria-label={label}
+                  target="_blank"
+                  rel="noreferrer"
                   className="w-10 h-10 bg-white/5 border border-white/10 rounded-xl flex items-center justify-center text-gray-400 hover:text-white hover:bg-primary hover:border-primary transition-all duration-200"
                 >
                   <Icon size={17} />

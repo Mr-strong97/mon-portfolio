@@ -66,29 +66,31 @@ export const Hero: React.FC = () => {
             </p>
 
             {/* CTA Buttons */}
-            <div className="flex flex-wrap gap-4 mb-10">
+            <div className="flex flex-col sm:flex-row sm:flex-wrap gap-4 mb-10">
               <button
                 onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
-                className="inline-flex items-center gap-2 px-6 py-3.5 bg-primary text-white font-semibold rounded-[10px] hover:bg-primary-dark transition-all duration-200 shadow-md hover:shadow-lg hover:-translate-y-0.5"
+                className="inline-flex w-full sm:w-auto items-center justify-center gap-2 px-6 py-3.5 bg-primary text-white font-semibold rounded-[10px] hover:bg-primary-dark transition-all duration-200 shadow-md hover:shadow-lg hover:-translate-y-0.5"
               >
                 Voir mes projets
                 <ArrowRight size={18} />
               </button>
               <button
                 onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-                className="inline-flex items-center gap-2 px-6 py-3.5 bg-transparent border-2 border-gray-900 text-gray-900 font-semibold rounded-[10px] hover:bg-gray-900 hover:text-white transition-all duration-200"
+                className="inline-flex w-full sm:w-auto items-center justify-center gap-2 px-6 py-3.5 bg-transparent border-2 border-gray-900 text-gray-900 font-semibold rounded-[10px] hover:bg-gray-900 hover:text-white transition-all duration-200"
               >
                 Me contacter
               </button>
             </div>
 
             {/* Social links */}
-            <div className="flex items-center gap-5">
+            <div className="flex flex-wrap items-center gap-5">
               {socialLinks.map(({ icon: Icon, label, href }) => (
                 <a
                   key={label}
                   href={href}
                   aria-label={label}
+                  target="_blank"
+                  rel="noreferrer"
                   className="text-gray-400 social-icon hover:text-primary"
                 >
                   <Icon size={20} />
@@ -166,19 +168,19 @@ export const Hero: React.FC = () => {
             </div>
 
             {/* Floating badges */}
-            <div className="absolute -left-6 top-1/4 float-anim">
+            <div className="absolute -left-6 top-1/4 hidden lg:block float-anim">
               <div className="bg-white shadow-lg border border-blue-100 px-4 py-2.5 rounded-2xl text-sm font-semibold text-gray-900 whitespace-nowrap">
                 <span className="text-primary">10+</span> Projets Solo
               </div>
             </div>
-            <div className="absolute -right-4 bottom-1/4 float-anim-delay">
+            <div className="absolute -right-4 bottom-1/4 hidden lg:block float-anim-delay">
               <div className="bg-white shadow-lg border border-blue-100 px-4 py-2.5 rounded-2xl text-sm font-semibold text-gray-900 whitespace-nowrap">
                 <span className="text-primary">IA</span> Specialist
               </div>
             </div>
 
             {/* Skill badges below */}
-            <div className="absolute -bottom-6 left-0 right-0 flex justify-center gap-3">
+            <div className="absolute -bottom-6 left-0 right-0 hidden sm:flex justify-center gap-3">
               {['Intégration IA', 'UX Strategy', 'Fullstack Dev'].map((tag) => (
                 <span
                   key={tag}

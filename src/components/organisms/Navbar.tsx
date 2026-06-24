@@ -99,7 +99,7 @@ export const Navbar: React.FC = () => {
         <div
           className={`absolute top-[64px] left-0 right-0 bg-white shadow-xl border-t border-gray-100 transition-transform duration-300 ${
             menuOpen ? 'translate-y-0' : '-translate-y-4'
-          }`}
+          } max-h-[calc(100vh-64px)] overflow-y-auto`}
         >
           <div className="flex flex-col py-4 px-6">
             {navLinks.map((link) => (

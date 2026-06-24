@@ -18,7 +18,6 @@ export const projectsData: Project[] = [
     category: 'Mon Parcours',
     tags: ['React', 'OpenAI', 'Node.js'],
     image: 'https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=600&h=400&fit=crop',
-    liveUrl: '#',
     githubUrl: 'https://github.com/Mr-strong97',
     featured: true,
   },
@@ -29,7 +28,6 @@ export const projectsData: Project[] = [
     category: 'Web',
     tags: ['Next.js', 'TypeScript', 'PostgreSQL'],
     image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop',
-    liveUrl: '#',
     githubUrl: 'https://github.com/Mr-strong97',
     featured: true,
   },
@@ -40,7 +38,6 @@ export const projectsData: Project[] = [
     category: 'Mobile',
     tags: ['React Native', 'Firebase', 'Stripe'],
     image: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&h=400&fit=crop',
-    liveUrl: '#',
     githubUrl: 'https://github.com/Mr-strong97',
     featured: true,
   },
@@ -51,7 +48,6 @@ export const projectsData: Project[] = [
     category: 'IA',
     tags: ['Python', 'TensorFlow', 'Django'],
     image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop',
-    liveUrl: '#',
     githubUrl: 'https://github.com/Mr-strong97',
   },
   {
@@ -61,7 +57,6 @@ export const projectsData: Project[] = [
     category: 'Mobile',
     tags: ['Vue.js', 'Node.js', 'MongoDB'],
     image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=600&h=400&fit=crop',
-    liveUrl: '#',
     githubUrl: 'https://github.com/Mr-strong97',
   },
   {
@@ -71,7 +66,6 @@ export const projectsData: Project[] = [
     category: 'Équipe',
     tags: ['Laravel', 'MySQL', 'Vue.js'],
     image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=600&h=400&fit=crop',
-    liveUrl: '#',
     githubUrl: 'https://github.com/Mr-strong97',
   },
   {
@@ -81,7 +75,6 @@ export const projectsData: Project[] = [
     category: 'Design',
     tags: ['Figma', 'Storybook', 'React'],
     image: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600&h=400&fit=crop',
-    liveUrl: '#',
     githubUrl: 'https://github.com/Mr-strong97',
   },
   {
@@ -91,7 +84,6 @@ export const projectsData: Project[] = [
     category: 'IA',
     tags: ['OpenAI', 'React', 'WebSocket'],
     image: 'https://images.unsplash.com/photo-1531746790731-6c087fecd65a?w=600&h=400&fit=crop',
-    liveUrl: '#',
     githubUrl: 'https://github.com/Mr-strong97',
   },
   {
@@ -101,7 +93,6 @@ export const projectsData: Project[] = [
     category: 'Équipe',
     tags: ['Next.js', 'Stripe', 'PostgreSQL'],
     image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop',
-    liveUrl: '#',
     githubUrl: 'https://github.com/Mr-strong97',
   },
 ];
